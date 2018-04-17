@@ -50,6 +50,13 @@ var obj = 0;
 var wrongAnswerMsg = `Sorry! That is incorrect! The correct answer is ${questions[obj].answer}`;
 var correctAnswerMsg = `Way to go! That is the correct answer!`;
 var unansweredMsg = `You ran out of time! The correct answer is ${questions[obj].answer}`;
+var countdown = null;
+
+function endOfGame() {
+    $("#answer").hide();
+    $("#results").show();
+}
+
 
 function showIfCorrect() {
     $("#content").hide();
@@ -57,7 +64,11 @@ function showIfCorrect() {
     $("#message").append("<h3>" + correctAnswerMsg + "</h3>");
     $("#message > h3").css("color", "green");
     obj++;
-    showNextQuestion();
+    if (obj === questions.length) {
+        endOfGame();
+    } else {
+        showNextQuestion();
+    }
 }
 
 function showIfWrong() {
@@ -65,17 +76,23 @@ function showIfWrong() {
     $("#answer").show();
     $("#message").append(`<h3> ${wrongAnswerMsg} </h3>`);
     obj++;
-    showNextQuestion();
+    if (obj === questions.length) {
+        endOfGame();
+    } else {
+        showNextQuestion();
+    }
 }
 
 function outOfTime() {
-    if (count === 0) {
-        $("#content").hide();
-        $("#answer").show();
-        $("#message").append(`<h3> ${unansweredMsg} </h3>`);
-    }
+    $("#content").hide();
+    $("#answer").show();
+    $("#message").append(`<h3> ${unansweredMsg} </h3>`);
     obj++;
-    showNextQuestion();
+    if (obj === questions.length) {
+        endOfGame();
+    } else {
+        showNextQuestion();
+    }
 }
 
 function showTimer() {
@@ -101,7 +118,20 @@ function showChoices() {
     } 
 }
 
+
+function reset() {
+    $("#restartButton").click(function(){
+        location.reload();
+    });
+}
+
 function showNextQuestion(){
+    $("#timer").empty();
+    $("#questionDiv").empty();
+    $("choicesDiv").empty();
+    $("#content").show();
+    
+    clearInterval(countdown);
     // show timer
     showTimer();
     // show question
@@ -109,8 +139,8 @@ function showNextQuestion(){
     // show choices
     showChoices();
     $("p").click(function(){
-        clearInterval(count);
         if ($(this).hasClass("correct")) {
+            $(this).removeClass("correct");
             showIfCorrect();
         } else {
             showIfWrong();
@@ -123,8 +153,6 @@ function startGame(){
     $("#startButton").click(function(){
         $(this).hide();
         showNextQuestion();
-        //Add another function to show the next question with choices and 
-        // start the timer here for 15 seconds
 
         $("#content").show();
     })
