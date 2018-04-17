@@ -1,0 +1,61 @@
+* {
+    outline: 1px solid red;
+}
+
+body {
+    background-color: black;
+}
+
+#main {
+    background-color: yellow;
+    margin: 50px auto;
+    padding: 15px;
+} 
+
+#main h1 {
+    background-color: green;
+    padding: 20px;
+    margin: 20px;
+    font-size: 50px;
+}
+
+#main button {
+    padding: 10px 30px;
+    font-size: 30px;
+    margin: 125px auto;
+}
+
+#main button:hover {
+    background-color: rgba(189, 180, 180, 0.651);
+}
+
+#timer {
+    margin: 20px auto;
+    width: 40%;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#questionDiv {
+    margin: 20px auto;
+    border: 2px solid blue;
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+#choicesDiv {
+    margin: 20px auto;
+    border: 2px solid blue;
+    width: 60%;
+    font-size: 25px;
+}
+
+#choicesDiv p:hover {
+    background-color: white;
+}
+
+#content {
+    border: 1px solid black;
+    font-size: 35px;
+}
+

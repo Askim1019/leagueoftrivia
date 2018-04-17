@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trivia Game</title>
+    <title>League of Trivia</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -12,7 +12,21 @@
 </head>
 <body>
     <div class="container text-center" id="main">
-    
+        <h1>League of Trivia!</h1>
+
+        <!--start button only at beginning of window load-->
+        <button class="btn-primary" id="startButton">Start Trivia</button>
+
+        <div class="container" id="content">
+            <!--Post the Timer up here-->
+            <div id="timer"></div>
+
+            <!--Questions will be posted here-->
+            <div id="questionDiv"></div>
+
+            <!--Choices will be posted on the next four lines-->
+            <div id="choicesDiv"></div>
+        </div>
     </div>
 
 
