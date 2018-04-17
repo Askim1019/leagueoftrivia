@@ -17,7 +17,7 @@
         <!--start button only at beginning of window load-->
         <button class="btn-primary" id="startButton">Start Trivia</button>
 
-        <div class="container" id="content">
+        <div class="container" class="content-wrapper" id="content">
             <!--Post the Timer up here-->
             <div id="timer"></div>
 
@@ -26,6 +26,20 @@
 
             <!--Choices will be posted on the next four lines-->
             <div id="choicesDiv"></div>
+        </div>
+
+        <!--Show Correct Answer (whether the users is correct or wrong)-->
+        <div class="container" class="content-wrapper" id="answer">
+            <div id="message"></div>
+            <div id="correctAnswer"></div>
+        </div>
+
+        <!--Show the score and have a Play Again button-->
+        <div class="container" class="content=wrapper" id="results">
+            <h2>Here were your results!</h2>
+            <div id="amountCorrect"></div>
+            <div id="amountWrong"></div>
+            <div id="amountUnanswered"></div>
         </div>
     </div>
 

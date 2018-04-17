@@ -46,14 +46,14 @@ var correctAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
 var count = 15;
-
-
+var questionNumber = 0;
 
 var countdown = setInterval(function(){
     showTimer();
 
     if (count === 0) {
         clearInterval(countdown);
+        outOfTime();
     }
     count--;
 }, 1000);
@@ -61,25 +61,51 @@ var countdown = setInterval(function(){
 
 function showIfCorrect() {
 
+    questionNumber++;
+    showNextQuestion();
 }
 
 function showIfWrong() {
 
+    questionNumber++;
+    showNextQuestion();
+}
+
+function outOfTime() {
+
+    questionNumber++;
+    showNextQuestion();
 }
  */
 function showTimer() {
-        $("#timer").html("<p>You have " + count +  " seconds left!</p>");
+        $("#timer").html("<h3>You have " + count +  " seconds left!</h3>");
+}
+
+
+function showChoices() {
+    for (var j = 0; j < questions[0]["choices"].length; j++) {
+        $("#choicesDiv").append("<p>" + questions[0].choices[j] + "</p>");
+
+        if (questions[0].choices[j] === questions[0].answer) {
+            $(`p:eq(${j})`).addClass("correct");
+        }
+    } 
 }
 
 function showNextQuestion(){
     // show timer
     showTimer();
     // show question
-    $("#questionDiv").html("<p>" + questions[0].question + "</p>");
+    $("#questionDiv").html("<h3>" + questions[0].question + "</h3>");
     // show choices
-    for (var i = 0; i < questions[0]["choices"].length; i++) {
-        $("#choicesDiv").append("<p>" + questions[0].choices[i] + "</p>");
-    } 
+    showChoices();
+    $("p").click(function(){
+        if ($(this).hasClass("correct")) {
+            console.log('correct!'); // showIfCorrect();
+        } else {
+            console.log('nope'); // showIfWrong();
+        }
+    });
 }
 
 
@@ -89,7 +115,6 @@ function startGame(){
         showNextQuestion();
         //Add another function to show the next question with choices and 
         // start the timer here for 15 seconds
-        
 
         $("#content").show();
     })
@@ -99,5 +124,7 @@ function startGame(){
 
 $(document).ready(function(){
     $("#content").hide();
+    $("#answer").hide();
+    $("#results").hide();
     startGame();
 });

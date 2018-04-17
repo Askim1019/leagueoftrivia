@@ -7,7 +7,7 @@ body {
 }
 
 #main {
-    background-color: yellow;
+    background-color: rgba(233, 233, 219, 0.815);
     margin: 50px auto;
     padding: 15px;
 } 
@@ -38,23 +38,27 @@ body {
 
 #questionDiv {
     margin: 20px auto;
-    border: 2px solid blue;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bolder;
 }
 
 #choicesDiv {
     margin: 20px auto;
-    border: 2px solid blue;
     width: 60%;
     font-size: 25px;
+}
+#choicesDiv p {
+    width: 60%;
+    margin: 10px auto;
+    border: 1px solid black;
 }
 
 #choicesDiv p:hover {
     background-color: white;
+    cursor: pointer;
 }
 
-#content {
+.content {
     border: 1px solid black;
     font-size: 35px;
 }
