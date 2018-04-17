@@ -49,7 +49,7 @@ var count = 15;
 var obj = 0;
 var wrongAnswerMsg = `Sorry! That is incorrect! The correct answer is ${questions[obj].answer}`;
 var correctAnswerMsg = `Way to go! That is the correct answer!`;
-
+var unansweredMsg = `You ran out of time! The correct answer is ${questions[obj].answer}`;
 
 function showIfCorrect() {
     $("#content").hide();
@@ -67,13 +67,17 @@ function showIfWrong() {
     obj++;
     showNextQuestion();
 }
-/* 
-function outOfTime() {
 
+function outOfTime() {
+    if (count === 0) {
+        $("#content").hide();
+        $("#answer").show();
+        $("#message").append(`<h3> ${unansweredMsg} </h3>`);
+    }
     obj++;
     showNextQuestion();
 }
- */
+
 function showTimer() {
     var countdown = setInterval(function(){
         $("#timer").html("<h3>You have " + count +  " seconds left!</h3>");
@@ -105,11 +109,10 @@ function showNextQuestion(){
     // show choices
     showChoices();
     $("p").click(function(){
+        clearInterval(count);
         if ($(this).hasClass("correct")) {
-            console.log('correct!');
             showIfCorrect();
         } else {
-            console.log('nope');
             showIfWrong();
         }
     });
