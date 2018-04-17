@@ -46,47 +46,52 @@ var correctAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
 var count = 15;
-var questionNumber = 0;
+var obj = 0;
+var wrongAnswerMsg = `Sorry! That is incorrect! The correct answer is ${questions[obj].answer}`;
+var correctAnswerMsg = `Way to go! That is the correct answer!`;
 
-var countdown = setInterval(function(){
-    showTimer();
-
-    if (count === 0) {
-        clearInterval(countdown);
-        outOfTime();
-    }
-    count--;
-}, 1000);
-/* 
 
 function showIfCorrect() {
-
-    questionNumber++;
+    $("#content").hide();
+    $("#answer").show();
+    $("#message").append("<h3>" + correctAnswerMsg + "</h3>");
+    $("#message > h3").css("color", "green");
+    obj++;
     showNextQuestion();
 }
 
 function showIfWrong() {
-
-    questionNumber++;
+    $("#content").hide();
+    $("#answer").show();
+    $("#message").append(`<h3> ${wrongAnswerMsg} </h3>`);
+    obj++;
     showNextQuestion();
 }
-
+/* 
 function outOfTime() {
 
-    questionNumber++;
+    obj++;
     showNextQuestion();
 }
  */
 function showTimer() {
+    var countdown = setInterval(function(){
         $("#timer").html("<h3>You have " + count +  " seconds left!</h3>");
+        
+        if (count === 0) {
+            clearInterval(countdown);
+            outOfTime();
+        }
+        count--;
+    }, 1000);
 }
 
 
 function showChoices() {
-    for (var j = 0; j < questions[0]["choices"].length; j++) {
-        $("#choicesDiv").append("<p>" + questions[0].choices[j] + "</p>");
+    for (var j = 0; j < questions[obj]["choices"].length; j++) {
+        $("#choicesDiv").append("<p>" + questions[obj].choices[j] + "</p>");
 
-        if (questions[0].choices[j] === questions[0].answer) {
+        if (questions[obj].choices[j] === questions[obj].answer) {
             $(`p:eq(${j})`).addClass("correct");
         }
     } 
@@ -96,14 +101,16 @@ function showNextQuestion(){
     // show timer
     showTimer();
     // show question
-    $("#questionDiv").html("<h3>" + questions[0].question + "</h3>");
+    $("#questionDiv").html("<h3>" + questions[obj].question + "</h3>");
     // show choices
     showChoices();
     $("p").click(function(){
         if ($(this).hasClass("correct")) {
-            console.log('correct!'); // showIfCorrect();
+            console.log('correct!');
+            showIfCorrect();
         } else {
-            console.log('nope'); // showIfWrong();
+            console.log('nope');
+            showIfWrong();
         }
     });
 }

@@ -63,3 +63,15 @@ body {
     font-size: 35px;
 }
 
+#answer {
+    margin-top: 55px;
+}
+
+#message h3{
+    font-size: 40px;
+    color: red;
+}
+
+#picture {
+    margin-top: 25px;
+}
