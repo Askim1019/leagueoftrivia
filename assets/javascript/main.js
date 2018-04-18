@@ -62,7 +62,10 @@ function timer() {
         if (count <= 0 || runClock) {
             clearInterval(interval);
             clearDivs();
+            $("#answer").show();
+            $("#message").append(`<h3> ${outOfTimeMsg} </h3>`);
             setTimeout(function(){
+                clearDivs();
                 unAnswered++;
                 obj++;
                 nextQuestion();
@@ -134,6 +137,7 @@ function nextQuestion() {
     console.log(correctAnswers);
     console.log(wrongAnswers);
     count = 15;
+    outOfTimeMsg = `You ran out of time! The correct answer is ` + questions[obj].answer;
     wrongAnswerMsg = `Sorry! That is incorrect! The correct answer is ` + questions[obj].answer;
     correctAnswerMsg = `Way to go! That is the correct answer!`;
     clearInterval(interval);
