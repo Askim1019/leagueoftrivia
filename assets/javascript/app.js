@@ -1,4 +1,4 @@
-// Make an array of objects to grab the question, choices, and correct answer
+/* // Make an array of objects to grab the question, choices, and correct answer
 questions = [
     {
         question: "League of Legends was inspired by which of the following?",
@@ -59,6 +59,7 @@ function endOfGame() {
 
 
 function showIfCorrect() {
+    clearInterval(countdown);
     $("#content").hide();
     $("#answer").show();
     $("#message").append("<h3>" + correctAnswerMsg + "</h3>");
@@ -72,6 +73,7 @@ function showIfCorrect() {
 }
 
 function showIfWrong() {
+
     $("#content").hide();
     $("#answer").show();
     $("#message").append(`<h3> ${wrongAnswerMsg} </h3>`);
@@ -84,6 +86,7 @@ function showIfWrong() {
 }
 
 function outOfTime() {
+    clearInterval(countdown);
     $("#content").hide();
     $("#answer").show();
     $("#message").append(`<h3> ${unansweredMsg} </h3>`);
@@ -96,10 +99,11 @@ function outOfTime() {
 }
 
 function showTimer() {
+    clearInterval(countdown);
     var countdown = setInterval(function(){
         $("#timer").html("<h3>You have " + count +  " seconds left!</h3>");
         
-        if (count === 0) {
+        if (count <= 0) {
             clearInterval(countdown);
             outOfTime();
         }
@@ -128,10 +132,10 @@ function reset() {
 function showNextQuestion(){
     $("#timer").empty();
     $("#questionDiv").empty();
-    $("choicesDiv").empty();
+    $("#choicesDiv").empty();
+    $("#message").empty();
+    $("#picture").empty();
     $("#content").show();
-    
-    clearInterval(countdown);
     // show timer
     showTimer();
     // show question
@@ -165,4 +169,4 @@ $(document).ready(function(){
     $("#answer").hide();
     $("#results").hide();
     startGame();
-});
+}); */
