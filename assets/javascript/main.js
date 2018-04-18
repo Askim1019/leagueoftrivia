@@ -61,10 +61,12 @@ function timer() {
         $("#timer").html("<h3>You have " + count +  " seconds</h3>");
         if (count <= 0 || runClock) {
             clearInterval(interval);
-            outOfTime();
-            count = 15;
-            unAnswered++;
-            obj++;
+            clearDivs();
+            setTimeout(function(){
+                unAnswered++;
+                obj++;
+                nextQuestion();
+            },3000);
         }
     }, 1000);
 }
@@ -96,11 +98,6 @@ function clearDivs() {
     $("#amountUnanswered").empty();
 }
 
-// when timer runs to 0...
-function outOfTime() {
-    clearDivs();
-    unAnswered++;
-}
 // show a function when you pick correctly
 function correctPick() {
     clearDivs();
