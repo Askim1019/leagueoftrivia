@@ -7,38 +7,53 @@ body {
 }
 
 #main {
-    background-color: rgba(233, 233, 219, 0.815);
+    background-image: url("../images/rift.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 50px auto;
     padding: 15px;
+    height: 80vh;
 } 
 
 #main h1 {
-    background-color: green;
+    background-color: rgba(8, 64, 247, 0.705);
     padding: 20px;
     margin: 20px;
     font-size: 50px;
+    color: rgba(238, 238, 55, 0.932);
 }
 
 #main button {
     padding: 10px 30px;
     font-size: 30px;
     margin: 125px auto;
+    background-color: rgba(44, 44, 228, 0.815);
 }
 
 #main button:hover {
-    background-color: rgba(189, 180, 180, 0.651);
+    background-color: rgba(178, 235, 232, 0.779);
+    cursor: pointer;
 }
 
 #timer {
     margin: 20px auto;
-    width: 40%;
-    font-size: 30px;
+    width: 50%;
+    background-color: rgba(56, 233, 233, 0.682); 
+}
+
+#timer h3 {
+    font-size: 40px;
     font-weight: bold;
 }
 
 #questionDiv {
+    background-color: rgba(185, 192, 185, 0.705);
+}
+
+#questionDiv h3 {
     margin: 20px auto;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bolder;
 }
 
@@ -49,12 +64,15 @@ body {
 }
 #choicesDiv p {
     width: 60%;
+    font-weight: bolder;
+    color: rgba(30, 34, 30, 0.747);
     margin: 10px auto;
     border: 1px solid black;
+    background-color: rgba(239, 243, 239, 0.747);
 }
 
 #choicesDiv p:hover {
-    background-color: white;
+    background-color: rgba(88, 184, 144, 0.678);
     cursor: pointer;
 }
 
@@ -70,6 +88,7 @@ body {
 #message h3{
     font-size: 40px;
     color: red;
+    background-color:rgba(185, 192, 185, 0.705);
 }
 
 #picture {
