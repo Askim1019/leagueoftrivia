@@ -66,6 +66,7 @@ function timer() {
         count--;
         $("#timer").html("<h3>You have " + count +  " seconds</h3>");
         if (count <= 0) {
+            playWrong();
             clearInterval(interval);
             clearDivs();
             $("#answer").show();
@@ -85,6 +86,7 @@ function timer() {
 }
 
 function showResults() {
+    playEnd();
     $("#amountCorrect").text("Correct Answers: " + correctAnswers);
     $("#amountWrong").text("Wrong Answers: " + wrongAnswers);
     $("#amountUnanswered").text("Unanswered: " + unAnswered);
@@ -124,6 +126,7 @@ function clearDivs() {
 
 // show a function when you pick correctly
 function correctPick() {
+    playCorrect();
     clearDivs();
     $("#message").html("<h3>" + correctAnswerMsg + "</h3>");
     $("#message > h3").css("color", "green");
@@ -143,6 +146,7 @@ function correctPick() {
 
 // show a function when the pick is wrong
 function wrongPick() {
+    playWrong();
     clearDivs();
     $("#answer").show();
     $("#message").append(`<h3> ${wrongAnswerMsg} </h3>`);
@@ -186,9 +190,33 @@ function nextQuestion() {
 
 }
 
+// Add sound effects
+
+function playWelcome() {
+    var audio = new Audio('assets/sounds/welcomerift.mp3');
+    audio.play();
+}
+
+function playCorrect() {
+    var audio1 = new Audio('assets/sounds/acedlol.mp3');
+    audio1.play();
+}
+
+function playWrong() {
+    var audio2 = new Audio('assets/sounds/shutdownlol.mp3');
+    audio2.play();
+}
+
+function playEnd() {
+    var audio3 = new Audio('assets/sounds/unstoppable.mp3');
+    audio3.play();
+}
+
+
 // initializes beginning of game
 
 $(document).ready(function(){
+    playWelcome();
     clearInterval(interval);
     $("#content").hide();
     $("#answer").hide();
